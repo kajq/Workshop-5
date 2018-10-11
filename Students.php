@@ -1,4 +1,6 @@
 <?php
+  require 'DataAccess.php';
+ 
 class Student {
   public $id;
   public $first_name;
@@ -10,14 +12,27 @@ class Student {
     $this->first_name = $first_name;
     $this->last_name = $last_name;
     $this->email_address = $email_address;
+    $this->DataAccess = new DataAccess();
+    $this->DataAccess->connect_db();
   }
   
   function to_string() {
-     return "{$this->id} - {$this->first_name} - {$this->last_name} - {$this->email_address} ". PHP_EOL;
+     return "{$this->id} - {$this->first_name} {$this->last_name} {$this->email_address}". PHP_EOL;
   }
 
-  function insertar(){
-    $sqlInsert = mysqli_query($mysqli,"INSERT INTO students VALUES('', $this->id, $this->first_name, $this->last_name, $this->email_address)");
+  function insert(){
+    $qInsert = "INSERT INTO students VALUES('', '{$this->first_name}', '{$this->last_name}', '{$this->email_address}')";
+    mysqli_query($this->DataAccess->mysqli,$qInsert);
+  }
+
+  function select(){
+  echo "ID \t Nombre \t Apellido \t Correo
+------------------------------------------------------------\n";
+    $qSelect = "Select * from students";
+    $query= mysqli_query($this->DataAccess->mysqli,$qSelect);
+      while($array=mysqli_fetch_array($query)){
+      echo "$array[0]    \t $array[1]    \t $array[2]      \t $array[3] \n";
+      }
   }
   
 }

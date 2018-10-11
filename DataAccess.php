@@ -1,27 +1,28 @@
 <?php 
 class DataAccess {
 
-//Se crean variables de conexión 
 public $localhost;
 public $user;
 public $pass;
 public $database;
+public $mysqli;
 
 //constructor de conexión
-	 function DataAccess($localhost, $user, $pass, $database) {
-	    $this->localhost = $localhost;
-	    $this->user = $user;
-	    $this->pass = $pass;
-	    $this->database = $database;
+	 function DataAccess() {
+	    $this->localhost = "localhost";
+	    $this->user = "root";
+	    $this->pass = "";
+	    $this->database = "userdb";
 	  }
 
 //funcion de conexión 
 	function connect_db(){
-	$mysqli = new MySQLi($this->localhost, $this->user, $this->pass, $this->database);
-			if ($mysqli -> connect_errno) {
-				die( "Fallo la conexión a MySQL: (" . $mysqli -> mysqli_connect_errno() 
-					. ") " . $mysqli -> mysqli_connect_error());
-			} 
+	$this->mysqli = new MySQLi($this->localhost, $this->user, $this->pass, $this->database);
+			if ($this->mysqli -> connect_errno) {
+				die( "Fallo la conexión a MySQL: (" . $this->mysqli -> mysqli_connect_errno() 
+					. ") " . $this->mysqli -> mysqli_connect_error());
+			}
 	} 
 }
+
 ?>
