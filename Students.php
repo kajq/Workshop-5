@@ -34,6 +34,15 @@ class Student {
       echo "$array[0]    \t $array[1]    \t $array[2]      \t $array[3] \n";
       }
   }
+
+  function update(){
+    $qUpdate =  "UPDATE students SET first_name = '{$this->first_name}', last_name = '{$this->last_name}',
+      email_address = '{$this->email_address}' WHERE id = '{$this->id}'";
+    $sql = mysqli_query($this->DataAccess->mysqli, $qUpdate);
+    if (!$sql) {
+          printf("Errormessage1: %s\n", $this->DataAccess->mysqli->error);
+    }
+  }
   
 }
 ?>
