@@ -1,8 +1,4 @@
 <?php 
-/*require 'DataAccess.php';
-$DataAccess = new DataAccess();
-$DataAccess->connect_db();*/
-
 require 'Students.php';
 if ($argc < 2 ) {exit(include 'menu.php' );}
 
@@ -23,6 +19,12 @@ switch ($argv[1]) {
 		$Student = new Student($argv[2], $argv[3], $argv[4], $argv[5]);
 		$Student->update();
 		$Student->select();	
+		break;
+	case 'Delete':
+		if ($argc <= 2 ) {exit(include 'menu.php' );}
+		$Student = new Student($argv[2],'','','');
+		$Student->delete();
+		$Student->select();
 		break;
 	default:
 		include 'menu.php';

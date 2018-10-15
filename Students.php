@@ -43,6 +43,14 @@ class Student {
           printf("Errormessage1: %s\n", $this->DataAccess->mysqli->error);
     }
   }
+
+  function delete(){
+    $qDelete = "DELETE FROM students WHERE id = '{$this->id}'";
+    $sql = mysqli_query($this->DataAccess->mysqli, $qDelete);
+     if (!$sql) {
+          printf("Errormessage1: %s\n", $this->DataAccess->mysqli->error);
+    }
+  }
   
 }
 ?>
