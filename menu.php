@@ -1,7 +1,7 @@
 <?php 
-echo("                      -Menu- \n
-Digite los siguientes comandos y las variables que este requiera \n
-Select: Muestra todos los registros, no requiere parametros
-Insert: Nombre, Apellido, Correo de estudiante 
-Update: Id, Nombre, Apellido, Correo que desea actualizar
-Delete: Codigo del estudiante que desea eliminar");
+echo("                      -Error- \n
+Por favor digite uno de los siguientes comandos y los parametros que este requiera
+Select: No requiere parametros     | Muestra todos los registros.
+Insert: Nombre Apellido Correo     | Inserta un nuevo registro
+Update: Id Nombre Apellido Correo  | Actualiza los datos del Id indicado
+Delete: Id                         | Codigo del estudiante que desea eliminar");

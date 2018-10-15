@@ -22,7 +22,12 @@ class Student {
 
   function insert(){
     $qInsert = "INSERT INTO students VALUES('', '{$this->first_name}', '{$this->last_name}', '{$this->email_address}')";
-    mysqli_query($this->DataAccess->mysqli,$qInsert);
+    $sql = mysqli_query($this->DataAccess->mysqli,$qInsert);
+    if (!$sql) {
+          printf("Errormessage1: %s\n", $this->DataAccess->mysqli->error);
+    }else {
+      echo "-----------Registro insertado!----------- \n";
+    }
   }
 
   function select(){
@@ -41,6 +46,8 @@ class Student {
     $sql = mysqli_query($this->DataAccess->mysqli, $qUpdate);
     if (!$sql) {
           printf("Errormessage1: %s\n", $this->DataAccess->mysqli->error);
+    } else {
+      echo "-----------Registro '{$this->first_name}' actualizado!----------- \n";
     }
   }
 
@@ -49,6 +56,8 @@ class Student {
     $sql = mysqli_query($this->DataAccess->mysqli, $qDelete);
      if (!$sql) {
           printf("Errormessage1: %s\n", $this->DataAccess->mysqli->error);
+    } else {
+      echo "-----------Registro eliminado!----------- \n";
     }
   }
   

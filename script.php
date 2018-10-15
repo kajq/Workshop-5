@@ -7,7 +7,6 @@ switch ($argv[1]) {
 		if ($argc <= 4 ) {exit(include 'menu.php' );}
 		$Student = new Student('', $argv[2], $argv[3], $argv[4]);
 		$Student->insert();
-		echo "Datos insertados: {$Student->to_string()}";
 		$Student->select();	
 		break;
 	case 'Select':
